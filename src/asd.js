@@ -9,12 +9,26 @@ function Square(props) {
     </button>
   );
 }
+/*
+class Square extends React.Component {
+  render() {
+    return (
+      <button 
+        className="square" 
+        onClick={() => this.props.onClick()} //don't confused by only write'onClick'
+      >
+        {this.props.value}
+      </button>
+    );
+  }
+}
+*/
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
+      squares: Array(30).fill(null), //
       xIsNext: true,
     };
   }
