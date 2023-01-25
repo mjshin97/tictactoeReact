@@ -21,7 +21,6 @@ class Board extends React.Component {
   }
 
   render() {
-    //modified from 3*3v
     return (
       <div>
         <div className="board-row">
@@ -70,7 +69,7 @@ class Game extends React.Component {
     this.state = {
       history: [
         {
-          squares: Array(25).fill(null), //modified from 3*3v
+          squares: Array(25).fill(null),
         },
       ],
       stepNumber: 0,
@@ -148,29 +147,110 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
 function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2, 3, 4],
-    [5, 6, 7, 8, 9],
-    [10, 11, 12, 13, 14],
-    [15, 16, 17, 18, 19],
-    [20, 21, 22, 23, 24],
-    [0, 5, 10, 15, 20],
-    [1, 6, 11, 16, 21],
-    [2, 7, 12, 17, 22],
-    [3, 8, 13, 18, 23],
-    [4, 9, 14, 19, 24],
-    [0, 6, 12, 18, 24],
-    [4, 8, 12, 16, 20],
-  ];
+  const width = [];
+
+  for (let x = 0; x < 25; x++) {
+    width.push(x);
+  }
+
+  var liness = [];
+  var count = 0;
+  var end = -2;
+
+  const lines = new Array();
+
+  for (let k = 0; k < 5; k++) {
+    for (let z = 0; z <= 3; z++) {
+      for (let j = count; j < 25; j++) {
+        liness = width.slice(j, j + 3);
+        lines.push(liness);
+
+        if (end % 3 == 0) {
+          count += 2;
+          break;
+        }
+        break;
+      }
+      count += 1;
+      end += 1;
+    }
+  }
+
+  var height = 0;
+  var heightval = [];
+
+  for (let y = 0; y < 5; y++) {
+    for (let z = 0; z < 5; z++) {
+      heightval.push(height);
+      height += 5;
+      if (height >= 25) {
+        break;
+      }
+    }
+
+    height = (height % 20) - 4;
+  }
+
+  var heightCount = 0;
+  var heightEnd = -2;
+
+  for (let w = 0; w < 5; w++) {
+    for (let e = 0; e <= 3; e++) {
+      for (let r = heightCount; r < 25; r++) {
+        liness = heightval.slice(r, r + 3);
+        lines.push(liness);
+
+        if (heightEnd % 3 == 0) {
+          heightCount += 2;
+          break;
+        }
+        break;
+      }
+      heightCount += 1;
+      heightEnd += 1;
+    }
+  }
+
+  var a = 0;
+  var b = 0;
+  var c = 0;
+  var crossCount = 0;
+  var crossLines = [];
+
+  for (let x = 0; x < 3; x++) {
+    for (let y = 0; y < 3; y++) {
+      a = width.indexOf(y + crossCount);
+      b = width.indexOf(y + 6 * 1 + crossCount);
+      c = width.indexOf(y + 6 * 2 + crossCount);
+      lines.push([a, b, c]);
+    }
+    crossCount += 5;
+  }
+
+  crossCount = 0;
+
+  for (let x = 0; x < 3; x++) {
+    for (let y = 2; y < 5; y++) {
+      a = width.indexOf(y + crossCount);
+      b = width.indexOf(y + 4 * 1 + crossCount);
+      c = width.indexOf(y + 4 * 2 + crossCount);
+      lines.push([a, b, c]);
+    }
+    crossCount += 5;
+  }
+
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c, d, e] = lines[i];
-    if (squares[a] && 
-      squares[a] === squares[b] 
-      && squares[a] === squares[c]
-      && squares[a] === squares[d]
-      && squares[a] === squares[e]) {
+    const [a, b, c] = lines[i];
+
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
-  return null;
+  for (let i = 0; i < 25; i++) {
+    if (squares[i] === null) {
+      return null;
+    }
+  }
+  return 25; //In the case of a tie, return 25
 }
+//reference : https://kamro17.tistory.com/79
