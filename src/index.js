@@ -10,17 +10,23 @@ class Square extends React.Component {
       value: null,
     };
   }
+
+  ///
+  plus(props){
+    this.value = {}
+  }
+  ///
+
   render() {
-    //
     return (
       <button className="square" onClick={() => this.setState({ value: "+" })}>
-        {console.log("clicked")}
         {this.state.value}
         {this.props.value}
-        {console.log(this.props.value)}
+        {console.log(this.props.value + " Clicked")}
       </button>
     );
   }
+
 }
 
 class Board extends React.Component {
