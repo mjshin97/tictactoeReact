@@ -30,11 +30,18 @@ class Square extends React.Component {
   }
 }
 
+function getNum(inputNum){
+  
+  return inputNum
+}
+
 class Board extends React.Component {
   renderSquare(i) {
     //
     return <Square value={i} tempVal={i} />;
   }
+
+  
 
   render() {
     const status = "Next player: X";
@@ -43,7 +50,7 @@ class Board extends React.Component {
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderSquare(0)}
+          {this.renderSquare(getNum(8))}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
           {this.renderSquare(3)}
@@ -88,6 +95,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board />
+          <Meetjul />
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
@@ -95,6 +103,32 @@ class Game extends React.Component {
         </div>
       </div>
     );
+  }
+}
+
+class Meetjul extends React.Component {
+
+  
+  /*
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+      getVal: props.tempVal,
+    };
+    console.log("props", props);
+  }
+  */
+
+  render() {
+    return (
+      <div>
+        {console.log()}
+        
+        _________________
+      </div>
+    );
+
   }
 }
 
