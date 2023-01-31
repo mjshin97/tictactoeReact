@@ -29,9 +29,37 @@ class Square extends React.Component {
   }
 }
 
+function SquareTemp(inputVal) {
+  let valTest = 0;
+
+  function board() {
+    // valTest
+  }
+
+  function newClick() {
+    // valTest
+  }
+  function returnNum() {
+    return (
+      <button
+        className="square"
+        onClick={() => {
+          Clicked(valTest);
+          valTest += 1;
+        }}
+      >
+        {"2" + valTest}
+      </button>
+    );
+  }
+
+  return returnNum();
+}
+
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={i} />;
+    // return <Square value={i} />;
+    return SquareTemp(i);
   }
 
   render() {
