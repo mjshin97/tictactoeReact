@@ -1,18 +1,28 @@
+import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
+function Clicked(props) {
+  console.log(props);
+  return <h1>_{props.value}_</h1>;
+}
+
+function SampleText() {
+  return <h1>aaaaaaa</h1>;
+}
 
 class Square extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: null,
-    }
+    };
   }
 
   render() {
     return (
-      <button className="square" onClick = {() => console.log(this.props.value + 'click')}>
+      <button className="square" onClick={() => Clicked(this.props.value)}>
         {this.props.value}
       </button>
     );
@@ -20,15 +30,12 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
-
-  
-
   renderSquare(i) {
     return <Square value={i} />;
   }
 
   render() {
-    const status = 'Next player: ' + (this.props.value);
+    const status = "Next player: " + this.props.value;
 
     return (
       <div>
@@ -59,6 +66,10 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board />
+          {/* <Clicked/> */}
+          <SampleText />
+          <Clicked value="ss" />
+          {Clicked({ value: "ss" })}
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
