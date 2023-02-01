@@ -3,9 +3,15 @@ import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+///new code start
+
+
+
+
+///new code done 
 ///////////////////////////////////////////////////////////////////////////////
-function Square() {
-  return <button className="square">{/* TODO */}</button>;
+function Square(props) {
+  return <button className="square">{props.value}</button>;
 }
 /*
 class Square extends React.Component {
@@ -19,8 +25,8 @@ class Square extends React.Component {
 }
 */
 ////////////////////////////////////////////////////////////////////////////////
-function renderSquare() {
-  return <Square />;
+function renderSquare(i) {
+  return <Square value ={i}/>;
 }
 
 function Board() {
@@ -83,7 +89,6 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
         <Board />
       </div>
       <div className="game-info">
