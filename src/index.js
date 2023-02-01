@@ -1,31 +1,32 @@
 //Class component to function component(practice)
 import { render } from "@testing-library/react";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 ///new code start
 
-
 function Clicked(props) {
-  console.log(props)
-  let number= 0
-  const [number2,setNumber2] = useState(0);
+  console.log(props);
+  let number = 0;
+  const [number2, setNumber2] = useState(0);
 
   const pointing = () => {
-    number = number + 1
-    setNumber2(number2 + 1)
-    console.log("pointing",number)
-  }
+    number = number + 1;
+    setNumber2(number2 + 1);
+    console.log("pointing", number);
+  };
 
-  return(
+  return (
     <main>
-      <h1>Number:{props.value}</h1>
+      {/* <h1>Number:{props.value}</h1> */}
+      {console.log("number:", number, " number2:", number2)}
+      <h1>Number:{number}</h1>
       <h1>Number:{number2}</h1>
       <button onClick={pointing}>Pointing</button>
     </main>
-  )
+  );
 }
-///new code done 
+///new code done
 ///////////////////////////////////////////////////////////////////////////////
 function Square(props) {
   return (
@@ -47,7 +48,7 @@ class Square extends React.Component {
 */
 ////////////////////////////////////////////////////////////////////////////////
 function renderSquare(i) {
-  return <Square value ={i}/>;
+  return <Square value={i} />;
 }
 
 function Board() {
@@ -105,10 +106,15 @@ class Board extends React.Component {
 */
 ////////////////////////////////////////////////////////////////////////////////
 function Game() {
+  // usestate number declare
+  // funcion click
+  // function board
+  
+  
   return (
     <div className="game">
       <div className="game-board">
-        <Clicked/>
+        <Clicked />
         <Board />
       </div>
       <div className="game-info">
