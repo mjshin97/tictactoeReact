@@ -1,11 +1,29 @@
 //Class component to function component(practice)
 import { render } from "@testing-library/react";
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 ///new code start
+
+
 function Clicked(props) {
   console.log(props)
+  let number= 0
+  const [number2,setNumber2] = useState(0);
+
+  const pointing = () => {
+    number = number + 1
+    setNumber2(number2 + 1)
+    console.log("pointing",number)
+  }
+
+  return(
+    <main>
+      <h1>Number:{props.value}</h1>
+      <h1>Number:{number2}</h1>
+      <button onClick={pointing}>Pointing</button>
+    </main>
+  )
 }
 ///new code done 
 ///////////////////////////////////////////////////////////////////////////////
@@ -60,10 +78,8 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square />;
   }
-
   render() {
     const status = "Next player: X";
-
     return (
       <div>
         <div className="status">{status}</div>
