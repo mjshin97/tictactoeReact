@@ -4,27 +4,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 ///new code start
-
 function Clicked(props) {
   console.log(props);
-  let number = 0;
-  const [number2, setNumber2] = useState(0);
-
-  const pointing = () => {
-    number = number + 1;
-    setNumber2(number2 + 1);
-    console.log("pointing", number);
-  };
-
-  return (
-    <main>
-      {/* <h1>Number:{props.value}</h1> */}
-      {console.log("number:", number, " number2:", number2)}
-      <h1>Number:{number}</h1>
-      <h1>Number:{number2}</h1>
-      <button onClick={pointing}>Pointing</button>
-    </main>
-  );
 }
 ///new code done
 ///////////////////////////////////////////////////////////////////////////////
@@ -106,15 +87,23 @@ class Board extends React.Component {
 */
 ////////////////////////////////////////////////////////////////////////////////
 function Game() {
+
   // usestate number declare
+  const [number2, setNumber2] = useState(0);
+  //use "setNumber2" to change basic value of "useState"
+
   // funcion click
+  function Click(props) {
+    return <h1>Number:{number2}</h1>;
+  }
+
   // function board
-  
-  
+
   return (
     <div className="game">
       <div className="game-board">
         <Clicked />
+        <Click />
         <Board />
       </div>
       <div className="game-info">
