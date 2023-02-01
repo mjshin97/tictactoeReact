@@ -4,14 +4,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 ///new code start
-
-
-
-
+function Clicked(props) {
+  console.log(props)
+}
 ///new code done 
 ///////////////////////////////////////////////////////////////////////////////
 function Square(props) {
-  return <button className="square">{props.value}</button>;
+  return (
+    <button className="square" onClick={() => Clicked(props.value)}>
+      {props.value}
+    </button>
+  );
 }
 /*
 class Square extends React.Component {
@@ -89,6 +92,7 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
+        <Clicked/>
         <Board />
       </div>
       <div className="game-info">
