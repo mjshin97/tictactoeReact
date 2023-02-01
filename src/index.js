@@ -1,69 +1,59 @@
+//Class component to function component(practice)
 import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
-function Clicked(props) {
-  console.log(props);
-  return <h1>_{props.value}_</h1>;
+///////////////////////////////////////////////////////////////////////////////
+function Square() {
+  return <button className="square">{/* TODO */}</button>;
 }
-
-function SampleText() {
-  return <h1>aaaaaaa</h1>;
-}
-
+/*
 class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
-
   render() {
     return (
-      <button className="square" onClick={() => Clicked(this.props.value)}>
-        {this.props.value}
+      <button className="square">
+        {}
       </button>
     );
   }
 }
-
-function SquareTemp(inputVal) {
-  let valTest = 0;
-
-  function board() {
-    // valTest
-  }
-
-  function newClick() {
-    // valTest
-  }
-  function returnNum() {
-    return (
-      <button
-        className="square"
-        onClick={() => {
-          Clicked(valTest);
-          valTest += 1;
-        }}
-      >
-        {"2" + valTest}
-      </button>
-    );
-  }
-
-  return returnNum();
+*/
+////////////////////////////////////////////////////////////////////////////////
+function renderSquare() {
+  return <Square />;
 }
 
+function Board() {
+  const status = "Next player: X";
+  return (
+    <div>
+      <div className="status">{status}</div>
+      <div className="board-row">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </div>
+      <div className="board-row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="board-row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  );
+}
+/*
 class Board extends React.Component {
   renderSquare(i) {
-    // return <Square value={i} />;
-    return SquareTemp(i);
+    return <Square />;
   }
 
   render() {
-    const status = "Next player: " + this.props.value;
+    const status = "Next player: X";
 
     return (
       <div>
@@ -87,48 +77,41 @@ class Board extends React.Component {
     );
   }
 }
-
+*/
+////////////////////////////////////////////////////////////////////////////////
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+        <Board />
+      </div>
+      <div className="game-info">
+        <div>{/* status */}</div>
+        <ol>{/* TODO */}</ol>
+      </div>
+    </div>
+  );
+}
+/*
 class Game extends React.Component {
   render() {
     return (
       <div className="game">
         <div className="game-board">
           <Board />
-          {/* <Clicked/> */}
-          <SampleText />
-          <Clicked value="ss" />
-          {Clicked({ value: "ss" })}
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <div>{}</div>
+          <ol>{}</ol>
         </div>
       </div>
     );
   }
 }
-
+*/
+////////////////////////////////////////////////////////////////////////////////
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
