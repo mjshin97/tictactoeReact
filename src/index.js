@@ -1,12 +1,15 @@
-//Class component to function component(practice)
+//resault helped by mentor
 import { render } from "@testing-library/react";
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 function Game() {
+  const [number2, setNumber2] = useState(0);
+
   function Clicked(props) {
-    setNumber2(props.value)
+    console.log(props);
     console.log(number2);
+    setNumber2(props);
   }
 
   function Square(props) {
@@ -17,16 +20,14 @@ function Game() {
     );
   }
 
-  const [number2, setNumber2] = useState(0);
-  
-  function Click(props) {
+  function Click() {
     return <h1>Number:{number2}</h1>;
   }
 
   function renderSquare(i) {
     return <Square value={i} />;
   }
-  
+
   function Board() {
     const status = "Next player: X";
     return (
@@ -54,7 +55,7 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Clicked />
+        {/* <Clicked /> */}
         <Click />
         <Board />
       </div>
