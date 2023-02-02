@@ -8,7 +8,6 @@ function Game() {
 
   function Clicked(props) {
     console.log(props);
-    console.log(number2);
     setNumber2(props);
   }
 
