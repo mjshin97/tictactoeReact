@@ -5,7 +5,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 function Game() {
   function Clicked(props) {
-    console.log(props);
+    setNumber2(props.value)
+    console.log(number2);
   }
 
   function Square(props) {
@@ -15,17 +16,13 @@ function Game() {
       </button>
     );
   }
-  // usestate number declare
+
   const [number2, setNumber2] = useState(0);
   
-  //use "setNumber2" to change basic value of "useState"
-
-  // funcion click
   function Click(props) {
     return <h1>Number:{number2}</h1>;
   }
 
-  // function board
   function renderSquare(i) {
     return <Square value={i} />;
   }
