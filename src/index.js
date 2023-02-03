@@ -8,7 +8,8 @@ function Game() {
 
   function Clicked(props) {
     console.log(props);
-    setNumber2(props);
+    console.log(number2); //original value
+    setNumber2(number2 + props);
   }
 
   function Square(props) {
