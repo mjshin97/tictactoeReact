@@ -1,4 +1,3 @@
-//resault helped by mentor
 import { render } from "@testing-library/react";
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
@@ -26,6 +25,18 @@ function Game() {
 
   function renderSquare(i) {
     return <Square value={i} />;
+  }
+
+  function InitialisePage() {
+    window.location.reload(false);
+  }
+
+  function InitialiseButton() {
+    return (
+      <div>
+        <button onClick={InitialisePage}>Click here for Initialise</button>
+      </div>
+    );
   }
 
   function Board() {
@@ -58,6 +69,7 @@ function Game() {
         {/* <Clicked /> */}
         <Click />
         <Board />
+        <InitialiseButton />
       </div>
       <div className="game-info">
         <div>{/* status */}</div>
