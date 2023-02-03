@@ -4,10 +4,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 function Game() {
   const [number2, setNumber2] = useState(0);
+  const [A, B] = useState([]);
+
+  /*
+  function CalculateProgress() {
+    return <h2>progress:{}</h2>;
+  }
+  */
+  const CalculateProgress = (number2) => {
+    return <h2>progress:{}</h2>;
+  };
 
   function Clicked(props) {
-    console.log(props);
-    console.log(number2); //original value
+    console.log(props); //print clicked value
+    console.log(number2); //print original value
     setNumber2(number2 + props);
   }
 
@@ -20,7 +30,7 @@ function Game() {
   }
 
   function Click() {
-    return <h1>Number:{number2}</h1>;
+    return <h1>Result:{number2}</h1>;
   }
 
   function renderSquare(i) {
@@ -28,7 +38,8 @@ function Game() {
   }
 
   function InitialisePage() {
-    window.location.reload(false);
+    // window.location.reload(false);
+    setNumber2(0);
   }
 
   function InitialiseButton() {
@@ -67,6 +78,7 @@ function Game() {
     <div className="game">
       <div className="game-board">
         {/* <Clicked /> */}
+        <CalculateProgress />
         <Click />
         <Board />
         <InitialiseButton />
