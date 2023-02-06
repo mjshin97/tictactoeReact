@@ -6,17 +6,28 @@ function Game() {
   const [number2, setNumber2] = useState(0);
   const [num, setNum] = useState([]);
   const [A, sA] = useState([]);
+  const [B, sB] = useState([]);
   /*
   function CalculateProgress() {
     return <h2>progress:{}</h2>;
   }
   */
   const CalculateProgress = () => {
-    return <h1>CalculateProgress: {num}</h1>;
+    //  return <h1>CalculateProgress: {num}</h1>;
+    /*
+    let newStr = num.substr(0,num.length -1);
+    return <h1>CalculateProgress: {newStr}</h1>;
+    */
+    let newStr = num.slice(0, -1);
+    return <h1>CalculateProgress: {newStr}</h1>;
   };
 
   const CalculateProgress1 = () => {
-    return <h1>CalculateProgress: {num.length}</h1>;
+    return <h1>Blank : {num.length}</h1>;
+  };
+
+  const CalculateProgress3 = () => {
+    return <h1>CalculateStatus: {num[1]}</h1>;
   };
 
   function Clicked(props) {
@@ -27,8 +38,12 @@ function Game() {
     setNum(props);
     setNumber2(number2 + props);
 
+    tempB = B;
+    tempB = B + props;
+    sB(tempB);
+
     tempA = A;
-    tempA = A + props;
+    tempA = A + props + "+";
     sA(tempA);
 
     console.log(tempA); //sA
@@ -52,8 +67,10 @@ function Game() {
   }
 
   function InitialisePage() {
-    // window.location.reload(false);
+    //window.location.reload(false);
     setNumber2(0);
+    sA([]);
+    setNum([]);
   }
 
   function InitialiseButton() {
@@ -94,6 +111,7 @@ function Game() {
         {/* <Clicked /> */}
         <CalculateProgress />
         <CalculateProgress1 />
+        <CalculateProgress3 />
         <Click />
         <Board />
         <InitialiseButton />
