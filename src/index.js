@@ -28,8 +28,10 @@ function Game() {
       
     })
     */
+
     let array = B;
     const array2x = [array].map((num) => {
+      // console.log("num: ", num);
       return num;
     });
 
@@ -124,6 +126,7 @@ function Game() {
     <div className="game">
       <div className="game-board">
         {/* <Clicked /> */}
+
         <CalculateProgress />
         <CalculateProgress4 />
         <CalculateProgress1 />
