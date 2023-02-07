@@ -121,11 +121,32 @@ function Game() {
       </div>
     );
   }
+  const [tempff, setTempff] = useState();
+
+  const strngLog = () => {
+    let stringA = "asd";
+    let stringB = "dfg";
+    let numA = 1;
+    let numB = 2;
+    let returnString = [];
+    let viewString = "";
+    // returnString = stringA + stringB;
+    returnString.push(numA);
+    returnString.push(numB);
+    returnString.forEach((item) => {
+      viewString = item + "+";
+      console.log(item);
+    });
+    console.log("returnString", returnString);
+    return <h1>{("viewString: ", viewString)}</h1>;
+  };
 
   return (
     <div className="game">
       <div className="game-board">
         {/* <Clicked /> */}
+
+        {strngLog()}
 
         <CalculateProgress />
         <CalculateProgress4 />
