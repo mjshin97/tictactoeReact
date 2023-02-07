@@ -21,7 +21,22 @@ function Game() {
     let newStr = num.slice(0, -1);
     return <h1>CalculateProgress: {newStr}</h1>;
   };
+  ///////////////////////////////////////////////////////
+  const CalculateProgress4 = () => {
+    /*
+    B.map(function(){
+      
+    })
+    */
+    let array = B;
+    const array2x = [array].map((num) => {
+      return num;
+    });
 
+    console.log(array2x);
+    return <h1>CalculateProgressM: {array2x}</h1>;
+  };
+  /////////////////////////////////////////////////////////
   const CalculateProgress1 = () => {
     return <h1>Blank : {num.length}</h1>;
   };
@@ -110,6 +125,7 @@ function Game() {
       <div className="game-board">
         {/* <Clicked /> */}
         <CalculateProgress />
+        <CalculateProgress4 />
         <CalculateProgress1 />
         <CalculateProgress3 />
         <Click />
