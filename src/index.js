@@ -7,7 +7,7 @@ function Game() {
   const [num, setNum] = useState([]);
   const [A, sA] = useState([]);
   const [B, sB] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
 
   const CalculateProgress = () => {
     let newStr = num.slice(0, -1);
@@ -15,35 +15,48 @@ function Game() {
   };
   ///////////////////////////////////////////////////////
 
+  // const CalculateProgress4 = () => {
+  //   let arrayTemp = B; //'item' is reffering 'B'
+  //   let returnString = arrayTemp.map((item, index) => `+${item}`);
+  //   console.log(returnString);
+
+  //   if (index === 0) {
+  //     returnString[0] = num[0]; //!!!!!!!!!!!!!!!!!!!!!!!
+  //   }
+
+  //   return <h1>CalculateProgressM: {returnString}</h1>;
+  // };
+
   const CalculateProgress4 = () => {
     let arrayTemp = B; //'item' is reffering 'B'
-    let returnString = arrayTemp.map((item, index) => `+${item}`);
+    let returnString = arrayTemp.map((item, index) => {
+      // `+${item}`;
+
+      console.log(item);
+      console.log(item);
+      console.log(item);
+
+      // if(index === 0){
+      //   return item;
+      // }
+      // else{
+      //   return "+" + item;
+      // }
+
+      return index === 0 ? item : "+" + item;
+    });
     console.log(returnString);
 
-    if (index === 0) {
-      returnString[0] = num[0]; //"num" was point
-    }
+    // if (index === 0) {
+    //   returnString[0] = num[0]; //!!!!!!!!!!!!!!!!!!!!!!!
+    // }
 
     return <h1>CalculateProgressM: {returnString}</h1>;
   };
 
-  /*
-  const CalculateProgress4 = () => {
-    let arrayTemp = B;
-    let returnString = "";
-    arrayTemp.map((item, index) => {
-      console.log("returnval : " + index, " : ", returnString);
-      returnString = returnString + item + "+";
-    });
-
-    return <h1>CalculateProgressM: {returnString}</h1>;
-  };
-  */
   /////////////////////////////////////////////////////////
-
   function Clicked(props) {
     let tempA = 0;
-    let tempB = 0;
 
     console.log(props); //print clicked value
     setNum(props);
@@ -84,8 +97,10 @@ function Game() {
 
   function InitialisePage() {
     //window.location.reload(false);
+
     setNumber2(0);
     sA([]);
+    sB([]);
     setNum([]);
   }
 
