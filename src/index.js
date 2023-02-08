@@ -7,45 +7,25 @@ function Game() {
   const [num, setNum] = useState([]);
   const [A, sA] = useState([]);
   const [B, sB] = useState([]);
-  /*
-  function CalculateProgress() {
-    return <h2>progress:{}</h2>;
-  }
-  */
+
   const CalculateProgress = () => {
-    //  return <h1>CalculateProgress: {num}</h1>;
-    /*
-    let newStr = num.substr(0,num.length -1);
-    return <h1>CalculateProgress: {newStr}</h1>;
-    */
     let newStr = num.slice(0, -1);
     return <h1>CalculateProgress: {newStr}</h1>;
   };
   ///////////////////////////////////////////////////////
-  const CalculateProgress4 = () => {
-    /*
-    B.map(function(){
-      
-    })
-    */
 
-    let array = B;
-    const array2x = [array].map((num) => {
-      // console.log("num: ", num);
-      return num;
+  const CalculateProgress4 = () => {
+    let arrayTemp = B;
+    let returnString = "";
+    arrayTemp.map((item, index) => {
+      console.log("returnval : " + index, " : ", returnString);
+      returnString = returnString + item + "+";
     });
 
-    console.log(array2x);
-    return <h1>CalculateProgressM: {array2x}</h1>;
-  };
-  /////////////////////////////////////////////////////////
-  const CalculateProgress1 = () => {
-    return <h1>Blank : {num.length}</h1>;
+    return <h1>CalculateProgressM: {returnString}</h1>;
   };
 
-  const CalculateProgress3 = () => {
-    return <h1>CalculateStatus: {num[1]}</h1>;
-  };
+  /////////////////////////////////////////////////////////
 
   function Clicked(props) {
     let tempA = 0;
@@ -55,9 +35,14 @@ function Game() {
     setNum(props);
     setNumber2(number2 + props);
 
-    tempB = B;
-    tempB = B + props;
-    sB(tempB);
+    // tempB = B;
+    // tempB = B + props;
+    // sB(tempB);
+
+    let tempC = [];
+    tempC = B;
+    tempC.push(props);
+    sB(tempC);
 
     tempA = A;
     tempA = A + props + "+";
@@ -121,37 +106,13 @@ function Game() {
       </div>
     );
   }
-  const [tempff, setTempff] = useState();
-
-  const strngLog = () => {
-    let stringA = "asd";
-    let stringB = "dfg";
-    let numA = 1;
-    let numB = 2;
-    let returnString = [];
-    let viewString = "";
-    // returnString = stringA + stringB;
-    returnString.push(numA);
-    returnString.push(numB);
-    returnString.forEach((item) => {
-      viewString = item + "+";
-      console.log(item);
-    });
-    console.log("returnString", returnString);
-    return <h1>{("viewString: ", viewString)}</h1>;
-  };
 
   return (
     <div className="game">
       <div className="game-board">
         {/* <Clicked /> */}
-
-        {strngLog()}
-
         <CalculateProgress />
         <CalculateProgress4 />
-        <CalculateProgress1 />
-        <CalculateProgress3 />
         <Click />
         <Board />
         <InitialiseButton />
