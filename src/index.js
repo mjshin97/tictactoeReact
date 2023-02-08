@@ -7,6 +7,7 @@ function Game() {
   const [num, setNum] = useState([]);
   const [A, sA] = useState([]);
   const [B, sB] = useState([]);
+  const [index, setIndex] = useState(0);
 
   const CalculateProgress = () => {
     let newStr = num.slice(0, -1);
@@ -14,6 +15,19 @@ function Game() {
   };
   ///////////////////////////////////////////////////////
 
+  const CalculateProgress4 = () => {
+    let arrayTemp = B; //'item' is reffering 'B'
+    let returnString = arrayTemp.map((item, index) => `+${item}`);
+    console.log(returnString);
+
+    if (index === 0) {
+      returnString[0] = num[0]; //"num" was point
+    }
+
+    return <h1>CalculateProgressM: {returnString}</h1>;
+  };
+
+  /*
   const CalculateProgress4 = () => {
     let arrayTemp = B;
     let returnString = "";
@@ -24,7 +38,7 @@ function Game() {
 
     return <h1>CalculateProgressM: {returnString}</h1>;
   };
-
+  */
   /////////////////////////////////////////////////////////
 
   function Clicked(props) {
