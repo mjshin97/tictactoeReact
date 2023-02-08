@@ -11,7 +11,13 @@ function Game() {
 
   const CalculateProgress = () => {
     let newStr = num.slice(0, -1);
-    return <h1>CalculateProgress: {newStr}</h1>;
+    newStr = newStr.concat(" =");
+
+    return (
+      <h1>
+        CalculateProgress: {newStr} {number2}{" "}
+      </h1>
+    );
   };
   ///////////////////////////////////////////////////////
 
@@ -51,7 +57,7 @@ function Game() {
     //   returnString[0] = num[0]; //!!!!!!!!!!!!!!!!!!!!!!!
     // }
 
-    return <h1>CalculateProgressM: {returnString}</h1>;
+    return <h1>계산: {returnString}</h1>;
   };
 
   /////////////////////////////////////////////////////////
@@ -88,7 +94,7 @@ function Game() {
   }
 
   function Click() {
-    return <h1>Result:{number2}</h1>;
+    return <h1>결과: {number2 === 0 ? null : number2}</h1>;
   }
 
   function renderSquare(i) {
@@ -107,13 +113,13 @@ function Game() {
   function InitialiseButton() {
     return (
       <div>
-        <button onClick={InitialisePage}>Click here for Initialise</button>
+        <button onClick={InitialisePage}>초기화</button>
       </div>
     );
   }
 
   function Board() {
-    const status = "Next player: X";
+    const status = null;
     return (
       <div>
         <div className="status">{status}</div>
@@ -136,15 +142,19 @@ function Game() {
     );
   }
 
+  function Total() {}
+
   return (
     <div className="game">
       <div className="game-board">
         {/* <Clicked /> */}
-        <CalculateProgress />
+
+        <Board />
         <CalculateProgress4 />
         <Click />
-        <Board />
         <InitialiseButton />
+        <Total />
+        {/* <CalculateProgress /> */}
       </div>
       <div className="game-info">
         <div>{/* status */}</div>
